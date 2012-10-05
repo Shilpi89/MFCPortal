@@ -8,6 +8,9 @@ development:
   database: mfc_dev
   pool: 5
   timeout: 5000
+  host: localhost
+  username: root
+  password: password
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,6 +20,9 @@ test:
   database: mfc_test
   pool: 5
   timeout: 5000
+  host: localhost
+  username: root
+  password: password
 
 production:
   adapter: mysql2

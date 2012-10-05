@@ -15,16 +15,18 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  # gem 'therubyracer', :platforms => :rubyl
 
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :production do
-  gem 'pg'
-end
+# group :production do
+#   gem 'pg'
+# end
 
 gem 'jquery-rails'
+
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -40,3 +42,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+group :test, :development do
+	gem "rspec-rails", ">= 2.9.0.rc2"
+	gem "factory_girl_rails", ">= 3.1.0"
+	gem 'webrat'
+end
