@@ -24,6 +24,7 @@ end
 #   gem 'pg'
 # end
 
+gem 'rb-readline'
 gem 'jquery-rails'
 
 gem 'therubyracer'
