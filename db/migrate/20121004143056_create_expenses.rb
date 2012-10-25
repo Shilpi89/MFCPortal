@@ -3,7 +3,7 @@ class CreateExpenses < ActiveRecord::Migration
     create_table :expenses do |t|
       t.string :description, :null => false
       t.float :amount, :null => false
-	  t.integer :created_by, :null => false
+	    t.integer :created_by, :null => false
       t.integer :updated_by, :null => false
       t.references :event
       t.timestamps

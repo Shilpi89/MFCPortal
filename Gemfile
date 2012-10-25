@@ -26,7 +26,7 @@ end
 
 gem 'rb-readline'
 gem 'jquery-rails'
-
+gem 'devise', '~>2.1.0'
 gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
