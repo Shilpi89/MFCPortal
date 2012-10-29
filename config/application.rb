@@ -63,3 +63,5 @@ module MFCPortal
     config.assets.initialize_on_precompile = false
   end
 end
+
+require File.expand_path("../../lib/constants.rb", __FILE__)
