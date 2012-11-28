@@ -1,15 +1,12 @@
 MFCPortal::Application.routes.draw do
   devise_for :users
-
-  resource :event, :controller => "event" do 
-    member do 
-      post 'create_event'
-      post 'index'
-    end
-  end
+  resources :events do
+    resources :expenses
+    resources :activities
+  end  
   
-  root :to => 'event#index'
-
+  resources :expenses
+  root :to => "events#index" 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
