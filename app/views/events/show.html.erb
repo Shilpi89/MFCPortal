@@ -1,0 +1,27 @@
+<div>
+  <h3> Viewing Event Number <%= @event.id %> </h3>
+ 
+    <div><b><font size="2px">Title:</font></b>
+      <%= @event.title %></div><br/>
+
+    <div><b><font size="2px">Type Of Event:</font></b>
+      <%= @event.category%></div><br/>  
+
+    <div><b><font size="2px">Description:</font></b>
+      <%= @event.description %></div><br/>
+
+    <div><b><font size="2px">Start Date: </font></b>
+      <%= @event.start_date %></div><br>
+
+    <div><b><font size="2px">End Date: </font></b>
+      <%= @event.end_date %></div><br/>
+    
+    <div style="height: 20px">
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
+
+
+    

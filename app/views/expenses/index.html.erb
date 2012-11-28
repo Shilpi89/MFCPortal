@@ -1,0 +1,32 @@
+<br/>
+<br/>
+<% if @expenses.blank? %> 
+<%= link_to "Add Expense", new_event_expense_path(@event)%> <br/> 
+<%= link_to "Back", events_path %>
+<% else %>
+<div style="min-width: 960px; overflow:auto;">
+    <table border ="1px" id="event_list_table" >
+      <thead>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><b>Description</b></td>
+          <td style=" min-width: 20px "><b>Amount</b></td>
+          <td style=" min-width: 20px "><b>Edit</b></td>
+          <td style=" min-width: 20px "><b>Delete</b></td>
+        </tr>
+      </thead>
+
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><%= expense.description%></td>
+          <td style=" min-width: 20px "><%=expense.amount%></td>
+          <td style=" min-width: 20px "><%= link_to "Edit", edit_event_expense_path(@event, expense) %></td>
+          <td style=" min-width: 20px "> <%= link_to 'Delete', [@event, expense], method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+        </tr>
+      <%end%>  
+    </table>
+  </div> 
+  <br/>
+  <br/>
+  <%= link_to "Add More", new_event_expense_path(@event)%> <br/>
+  <%= link_to "Back", events_path %>
+<%end%>

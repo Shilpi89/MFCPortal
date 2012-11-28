@@ -1,0 +1,27 @@
+<%= form_for (@event) do |f| %>
+   
+    <div><b><font size="3px">Title</font></b><br/>
+      <%= f.text_field :title %></div><br/>
+
+    <div><b><font size="3px">Select Type Of Event:</font></b><br/>
+      <%= f.select :category, options_for_select(EVENTS_CATEGORIES)%></div><br/>  
+
+    <div><b><font size="3px">Description</font></b><br/>
+      <%= f.text_area :description %></div><br/>
+
+    <div><b><font size="3px">Add Activities</font></b><br/>
+      <%= select_tag "Activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]} + [["other", "other"]]),{:multiple => true}%></div><br/>
+
+    <div><b><font size="3px">Start Date </font></b><br/>
+      <%= f.text_field :start_date %></div><br>
+
+    <div><b><font size="3px">End Date </font></b><br/>
+      <%= f.text_field :end_date %></div><br/>
+
+    <div style="height: 20px">
+    </div>
+
+    <div class="actions" ><%= f.submit%>
+    </div>
+    
+  <%end%>

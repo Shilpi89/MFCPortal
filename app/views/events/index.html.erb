@@ -1,0 +1,45 @@
+<div style = "margin-top: 20px">
+<%= link_to 'Create New Event ', new_event_path %>
+</div>
+
+ <div style="height: 20px">
+ </div>
+
+<%if @events.blank? %>
+<div>
+</div>
+<%else%>
+<div style="min-width: 960px; overflow:auto;">
+    <table border ="1px" id="event_list_table" >
+      <thead>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><b>Event ID</b></td>
+          <td style=" min-width: 20px "><b>Title </b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><b>Description </b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px "><b>Start Date</b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px "><b>End Date</b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 100px "><b>Category</b></td>
+          <td style=" min-width: 20px "><b>Expenses</b></td>
+          <td style=" min-width: 20px "><b> View </b></td>
+          <td style=" min-width: 20px "><b> Edit </b></td>
+          <td style=" min-width: 20px "><b> Delete </b></td>
+        </tr>
+      </thead>
+
+      <%@events.each do |event|%>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><%= event.id%></td>
+          <td style=" min-width: 20px "><%=event.title%></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px"><%=event.description%></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 150px"><%=event.start_date%></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px"><%=event.end_date%></td>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 70px"><%= get_event_category_name(event.category)%></td>
+          <td style=" min-width: 20px "><%= link_to "Expenses", event_expenses_path(event) %></td>
+          <td style=" min-width: 20px "><%= link_to "View", event_path(event)%></td>
+          <td style=" min-width: 20px "><%= link_to "Edit", edit_event_path(event)%></td>
+          <td style=" min-width: 20px "><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <%end%>
