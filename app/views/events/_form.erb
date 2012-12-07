@@ -10,7 +10,7 @@
       <%= f.text_area :description %></div><br/>
 
     <div><b><font size="3px">Add Activities</font></b><br/>
-      <%= select_tag "Activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]} + [["other", "other"]]),{:multiple => true}%></div><br/>
+      <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]} + [["other", "other"]]),{:multiple => true}%></div><br/>
 
     <div><b><font size="3px">Start Date </font></b><br/>
       <%= f.text_field :start_date %></div><br>
