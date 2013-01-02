@@ -5,7 +5,9 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+group :development do
+  gem 'mysql2'
+end  
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -18,9 +20,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-# group :production do
-#   gem 'pg'
-# end
+group :production do
+  gem 'pg'
+end
 
 gem 'rb-readline'
 gem 'jquery-rails'
