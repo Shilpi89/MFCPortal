@@ -1,14 +1,24 @@
+<div class= "well pull right span8" style = "min-height:500px; margin-left:50px"> 
 <div>
-  <h3> Viewing Event Number <%= @event.id %> </h3>
- 
-    <div><b><font size="2px">Title:</font></b>
-      <%= @event.title %></div><br/>
+  <h3> <%= @event.title.capitalize %> </h3>
 
     <div><b><font size="2px">Type Of Event:</font></b>
-      <%= @event.category%></div><br/>  
+      <%= get_event_category_name(@event.category)%></div><br/>  
 
     <div><b><font size="2px">Description:</font></b>
-      <%= @event.description %></div><br/>
+      <%= @event.description.capitalize %></div><br/>
+
+    <div><b><font size="2px">Activites:</font></b>
+      <% @event.activities.each do |eA|%>
+       <%= eA.title %><br>
+      <%end%>
+    </div><br/>
+
+    <div><b><font size="2px">Expenses:</font></b>
+      <% @event.expenses.each do |eE|%>
+       <%= eE.amount %><br>
+      <%end%>  
+    </div><br/>
 
     <div><b><font size="2px">Start Date: </font></b>
       <%= @event.start_date %></div><br>
@@ -19,9 +29,6 @@
     <div style="height: 20px">
     </div>
 </div>
-
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
-
-
-    
+</div>

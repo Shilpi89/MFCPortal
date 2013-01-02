@@ -9,13 +9,16 @@ class Event < ActiveRecord::Base
    
   validates :title, :description, :category, :start_date, :end_date, :presence => true
   validates :title, :length => 
-  { :minimum => 8,
-    :maximum => 50,
-    :too_short => "must have at least %{count} words",
-    :too_long  => "can have at most %{count} words"
+  {
+   :maximum => 50,
+   :too_long  => "Can have at most %{count} words"
   }
 
-  validates :description, :length => { :maximum => 500 }
+  validates :description, :length =>
+   { 
+    :maximum => 500,
+    :too_long  => "Can have at most %{count} words"
+    }
 
 
 end

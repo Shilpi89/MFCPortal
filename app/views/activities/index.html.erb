@@ -1,0 +1,34 @@
+<div class= "well pull right span8" style = "min-height:500px; margin-left:50px"> 
+<%if @activities.blank? %>
+<div>
+</div>
+<%else%>
+<div style="overflow:auto;">
+    <table border ="1px" id="activity_list_table" align = "center" >
+      <thead>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><b>Activity ID</b></td>
+          <td style=" min-width: 20px "><b>Title </b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; max-width: 250px "><b>Description </b></td>
+          <td style=" min-width: 20px "><b> Edit </b></td>
+          <td style=" min-width: 20px "><b> Delete </b></td>
+        </tr>
+      </thead>
+
+      <%@activities.each do |activity|%>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><%= activity.id%></td>
+          <td style=" min-width: 20px "><%= activity.title%></td>
+          <td style=" padding-right: 5px; padding-left: 5px; max-width: 250px"><%= activity.description%></td>
+          <td style=" min-width: 20px "><%= link_to "Edit", edit_activity_path(activity)%></td>
+          <td style=" min-width: 20px "><%= link_to (image_tag ("delete.png")), activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <%end%>
+  <div style ="margin-top :10px;  margin-left :90px">
+  <%= link_to 'Create New Activity ', new_activity_path %> <br>
+  <%= link_to 'Back', events_path %>
+</div>
+  </div>

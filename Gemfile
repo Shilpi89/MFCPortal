@@ -6,8 +6,6 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -27,7 +25,16 @@ end
 gem 'rb-readline'
 gem 'jquery-rails'
 gem 'devise', '~>2.1.0'
-gem 'therubyracer'
+gem "cancan", '~> 1.6.8'
+	gem 'therubyracer'
+	gem 'twitter-bootstrap-rails'
+	gem 'therubyrhino'
+	gem 'less-rails'
+	gem 'less'
+	gem 'libv8'
+
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

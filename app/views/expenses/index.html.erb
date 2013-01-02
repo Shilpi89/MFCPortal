@@ -1,8 +1,5 @@
-<br/>
-<br/>
+<div class= "well pull right span8" style = "min-height:500px; margin-left:50px"> 
 <% if @expenses.blank? %> 
-<%= link_to "Add Expense", new_event_expense_path(@event)%> <br/> 
-<%= link_to "Back", events_path %>
 <% else %>
 <div style="min-width: 960px; overflow:auto;">
     <table border ="1px" id="event_list_table" >
@@ -27,6 +24,7 @@
   </div> 
   <br/>
   <br/>
-  <%= link_to "Add More", new_event_expense_path(@event)%> <br/>
-  <%= link_to "Back", events_path %>
 <%end%>
+<%= link_to "Add More", new_event_expense_path(@event)%> <br/>
+<%= link_to "Back", events_path %>
+</div>
