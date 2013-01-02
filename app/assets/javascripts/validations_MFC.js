@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-$('input[type="submit"]').click(function(){
+$('#event_form_submit').click(function(){
 var count = 0
 
 if ($('#event_title').val() == ''){
@@ -37,24 +37,37 @@ if ($('#event_end_date').val() == ''){
    count = count + 1;
 }
 
-if ($('#activities').val() == null &&  $('#new_activity_title').val()== '' &&  $('#new_activity_description').val()== '' ){
+if ($('#activities').val() == null){
    $('#em_activities').html('Please Select a Activity');
    count = count + 1;
 }
 
-if ($('#new_activity_title').val()!= '' &&  $('#new_activity_description').val()== '' ){
-	  $('#em_new_activity').html('Please enter description for the new activity');
-	  count = count + 1;
-}
+$('#other_activity').click(function()
 
-if ($('#new_activity_title').val()== '' &&  $('#new_activity_description').val()!= '' ){
-	  $('#em_new_activity').html('Please enter title for the new activity');
-	  count = count + 1;
-}
+{
 
+   if ($('#activities').val() == null &&  $('#new_activity_title').val() == '' &&  $('#new_activity_description').val() == '' ){
+      $('#em_activities').html('Please Select a Activity');
+      count = count + 1;
+   }
+
+
+   if ($('#new_activity_title').val()!= '' &&  $('#new_activity_description').val()== '' ){
+       $('#em_new_activity').html('Please enter description for the new activity');
+       count = count + 1;
+   }
+
+   if ($('#new_activity_title').val()== '' &&  $('#new_activity_description').val()!= '' ){
+      $('#em_new_activity').html('Please enter title for the new activity');
+     count = count + 1;
+   }
+});
+
+   
+ 
 
 if (count != 0){
-	return false;
+   return false;
 } 
 
 

@@ -19,6 +19,35 @@ load_and_authorize_resource
         @event = Event.new (params[:event])
         @event.created_by = current_user.id
         @event.updated_by = current_user.id
+        @event.save
+
+        if params[:activities].blank?
+            if params[:new_activity_title].nil? 
+            else
+                @activity = Activity.new(:title => params[:new_activity_title], :description => params[:new_activity_description], :created_by => current_user.id)
+                @activity.save
+                @eventsActivity = EventsActivity.new(:event_id => @event.id,
+                :activity_id => @activity.id)
+                @eventsActivity.save
+            end  
+
+        else
+         
+             if params[:new_activity_title].nil? 
+            else
+                @activity = Activity.new(:title => params[:new_activity_title], :description => params[:new_activity_description], :created_by => current_user.id)
+                @activity.save
+                params[:activities] << @activity.id
+            end
+
+            params[:activities].each do |activity|
+                @eventsActivity = EventsActivity.new(:event_id => @event.id,
+                :activity_id => activity)
+                @eventsActivity.save
+            end
+        end
+
+
         if @event.save
             flash[:notice] = "Successfully created a new Event."
             redirect_to events_path
@@ -27,18 +56,6 @@ load_and_authorize_resource
             render :action => :new
         end
 
-        if params[:new_activity_title].nil? 
-        else
-            @activity = Activity.new(:title => params[:new_activity_title], :description => params[:new_activity_description], :created_by => current_user.id)
-            @activity.save!
-            params[:activities] << @activity.title
-        end
-
-        params[:activities].each do |activity|
-            @eventsActivity = EventsActivity.new(:event_id => @event.id,
-            :activity_id => activity)
-            @eventsActivity.save
-        end
     end
 
 
