@@ -12,6 +12,12 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <div>
+      <font size="3px"><%= f.label :role %>
+      <%= f.radio_button :role , 'Member',:checked => true %> Member 
+      <%= f.radio_button :role, 'Admin'%> Admin
+    </div><br>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
