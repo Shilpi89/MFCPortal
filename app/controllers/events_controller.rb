@@ -16,10 +16,22 @@ load_and_authorize_resource
 
     def create
         @activities = Activity.all
-        @event = Event.new (params[:event])
-        @event.created_by = current_user.id
-        @event.updated_by = current_user.id
-        @event.save
+        if params[:category_id].blank?
+          unless params[:new_category_name].nil?
+            @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
+            @category.save
+            @event = Event.new (params[:event])
+            @event.category_id = @category.id
+            @event.created_by = current_user.id
+            @event.updated_by = current_user.id
+            @event.save
+          end
+        else
+          @event = Event.new (params[:event])
+          @event.created_by = current_user.id
+          @event.updated_by = current_user.id
+          @event.save
+        end
 
         if params[:activities].blank?
             if params[:new_activity_title].nil? 
@@ -115,8 +127,13 @@ load_and_authorize_resource
         respond_to do |format|
             format.js {}
         end
+   
+    end
 
+        def other_category
+        respond_to do |format|
+            format.js {}
+        end
 
-    
     end
 end

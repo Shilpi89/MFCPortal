@@ -2,11 +2,13 @@ MFCPortal::Application.routes.draw do
   devise_for :users
   
   resources :activities
+  resources :categories
 
   resources :events do
     resources :expenses
     collection do      
-      post "other_activity"      
+      post "other_activity"
+      post "other_category"
       get "welcome"
     end
   end

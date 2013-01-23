@@ -27,6 +27,9 @@
     <li><%= link_to 'Manage Activites', activities_path %></li>
     <%end%>
 
+    <% if current_user.role.downcase == 'admin'%>
+    <li><%= link_to 'Manage Event Categories', categories_path %></li>
+    <%end%>
   </ul>
 
   </div>

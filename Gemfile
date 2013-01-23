@@ -28,12 +28,12 @@ gem 'rb-readline'
 gem 'jquery-rails'
 gem 'devise', '~>2.1.0'
 gem "cancan", '~> 1.6.8'
-	gem 'therubyracer'
+	#gem 'therubyracer'
 	gem 'twitter-bootstrap-rails'
 	gem 'therubyrhino'
-	gem 'less-rails'
-	gem 'less'
-	gem 'libv8'
+	#gem 'less-rails'
+	#gem 'less'
+	#gem 'libv8'
 
 
 
