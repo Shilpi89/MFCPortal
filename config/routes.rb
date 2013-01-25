@@ -6,14 +6,16 @@ MFCPortal::Application.routes.draw do
 
   resources :events do
     resources :expenses
-    collection do      
+    collection do
+      get "dashboard"
       post "other_activity"
       post "other_category"
       get "welcome"
     end
   end
 
-  root :to => "events#welcome" 
+  #root :to => "events#welcome"
+  root :to => "events#dashboard"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

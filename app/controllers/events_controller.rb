@@ -14,28 +14,35 @@ load_and_authorize_resource
         @activities = Activity.all
     end
 
+    def dashboard
+      #render :layout => 'special_layout'
+      #render :layout => false
+    end
     def create
         @activities = Activity.all
+        #code for setting dynamic category
+
         if params[:category_id].blank?
           unless params[:new_category_name].nil?
             @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
             @category.save
             @event = Event.new (params[:event])
-            @event.category_id = @category.id
-            @event.created_by = current_user.id
-            @event.updated_by = current_user.id
-            @event.save
+            @event.category_id = @category.id            
           end
         else
           @event = Event.new (params[:event])
-          @event.created_by = current_user.id
-          @event.updated_by = current_user.id
-          @event.save
         end
+            @event.created_by = current_user.id
+            @event.updated_by = current_user.id
+            @event.save
+            
 
+
+      
+        #code for setting dynamic activity
         if params[:activities].blank?
-            if params[:new_activity_title].nil? 
-            else
+            unless params[:new_activity_title].blank?
+            
                 @activity = Activity.new(:title => params[:new_activity_title], :description => params[:new_activity_description], :created_by => current_user.id)
                 @activity.save
                 @eventsActivity = EventsActivity.new(:event_id => @event.id,
@@ -102,8 +109,15 @@ load_and_authorize_resource
 
 
     def update
-        @event = Event.find(params[:id]) 
-        @event.update_attributes(params[:event]) 
+        @event = Event.find(params[:id])
+        unless params[:new_category_name].blank?
+          @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
+          @category.save
+          params[:event][:category_id] = @category.id
+          @event.update_attributes(params[:event])
+        else
+          @event.update_attributes(params[:event])
+        end
 
         if params[:new_activity_title].nil? 
         else
