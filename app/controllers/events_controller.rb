@@ -46,8 +46,6 @@ skip_filter :authenticate_user!, :only => :dashboard
           @event = Event.new (params[:event])
           @event.created_by = current_user.id
           @event.updated_by = current_user.id
-          p "------------------2"
-          p @event
           @event.save
         end
         
