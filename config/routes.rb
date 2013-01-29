@@ -2,7 +2,9 @@ MFCPortal::Application.routes.draw do
   devise_for :users
   
   resources :activities
-  resources :categories
+  resources :categories do
+    resources :events
+  end
 
   resources :events do
     resources :expenses

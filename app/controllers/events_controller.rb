@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   
-load_and_authorize_resource
+#load_and_authorize_resource
+skip_filter :authenticate_user!, :only => :dashboard
 
     def welcome
     end
@@ -14,30 +15,44 @@ load_and_authorize_resource
         @activities = Activity.all
     end
 
-    def dashboard
-      #render :layout => 'special_layout'
-      #render :layout => false
+    def dashboard     
+      @events = Event.all
+      @activities = Activity.all
+      @categories = Category.all
     end
+
+    
     def create
         @activities = Activity.all
         #code for setting dynamic category
 
-        if params[:category_id].blank?
+
+        if params[:event][:category_id].blank?
           unless params[:new_category_name].nil?
             @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
             @category.save
             @event = Event.new (params[:event])
-            @event.category_id = @category.id            
-          end
-        else
-          @event = Event.new (params[:event])
-        end
+            @event.category_id = @category.id
             @event.created_by = current_user.id
             @event.updated_by = current_user.id
             @event.save
-            
-
-
+          else
+            @event = Event.new (params[:event])
+            @event.created_by = current_user.id
+            @event.updated_by = current_user.id
+            @event.save
+          end
+        else
+          @event = Event.new (params[:event])
+          @event.created_by = current_user.id
+          @event.updated_by = current_user.id
+          p "------------------2"
+          p @event
+          @event.save
+        end
+        
+        
+        
       
         #code for setting dynamic activity
         if params[:activities].blank?
@@ -141,7 +156,6 @@ load_and_authorize_resource
         respond_to do |format|
             format.js {}
         end
-   
     end
 
         def other_category

@@ -4,7 +4,7 @@
 
     <div><b><font size="3px">Select Type Of Event:</font></b><br/>
       <%= collection_select(:event, :category_id, Category.all, :id, :name, {:include_blank => 'None'}) %>
-      <%#=  select("event", "category_id", Category.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'None'}) %>
+      
     </div><div id='em_activities'> </div>
       <%= link_to "Other Category", other_category_events_path(), {:remote => true, :id => "other_category", :method => :post} %>
 

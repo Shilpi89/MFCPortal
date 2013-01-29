@@ -1,110 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>McKinsey Fun Committee</title>
-<link href="http://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css" />
-<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-<script type="text/javascript" src="jquery/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="jquery/jquery.gallerax-0.2.js"></script>
-<style type="text/css">
-@import "gallery.css";
-</style>
-</head>
-<body>
 <div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
+  <div id="header-wrapper">
+    <div id="header">
+      <div id="menu1">
+        <ul>
+          <li class="current_page_item"><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div id="logo">
+        <h1 style="color:white">MFC</h1>
+        <p> McKinsey Fun Committee </p>
+      </div>
+      <div id="menu2">
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+<!-- end #header -->
+  </div>
 
-		<div id="back" ><h1><a href="home.html"> Home </a></h1></div>
-			<div id="menu1">
-				<ul>
-					<li class="current_page_item"><a href="gallery.html">Gallery</a></li>
-				</ul>
-			</div>
-			<div id="logo">
-				<h1><a href="index.html"> MFC </a></h1>
-				<p> McKinsey Fun Committee </p>
-			</div>
-			<div id="menu2">
-				<ul>
-					<li><a href="contact.html">Contact Us</a></li>
-				</ul>
-			</div>
-		</div>
-		<!-- end #header -->
-	</div>
-	<div id="welcome">
-		<h2 class="title"><a href="#">Welcome to MFC </a></h2>
-		<div class="entry">
-			<p>This is a fun side of <strong>McKinsey ODC</strong>. A committee which deals with all the fun activities to be organised within the ODC. The floor meetings of every month is an initiative taken by MFC to update the associates of the current month's activities.</p>
-		</div>
-	</div>
+  
+<div id="welcome">
+  <%if @events.blank?%>
+    <h2><h2 style="line-height: 100px;">No Events</h2></h2>
+  <%else%>
+    <% @events = Event.find(:all, :order => 'start_date').reverse%>
+    <%@events.each do |event|%>
+      <h2 id=""><%= event.title%></h2>
+      <div class="entry" style="padding-bottom: 60px;">
+        <p><%=event.description%></p>
+        <p>Date of Event : <%=event.start_date.to_date%></p>
+        
+      </div>
+      <div id="page">
+      <div id="column1">
+        <%if event.activities.count > 0%>
+        <% event.activities.each do |eA|%>
+          <h2> <%= eA.title %></h2>
+          <p style="color:black;"><%= eA.description %></p>
+        <%end%>
+          <%else%>
+          <h2>No Activities Added</h2>
+          <%end%>
+      </div>
+      </div>
 
-	<!-- end #page -->
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
-				<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="#">What is this all about?</a></h2>
-						<div class="entry">
-							<p><img src="images/one.jpg" alt="" width="350" height="250" class="alignleft" />
-						</div>
-						<div id="tile1"><img src="images/four.jpg" alt="" width="90" height="78" class="alignleft" /> </div>
-						<div id="tile2"><img src="images/two.jpg" alt="" width="90" height="78" class="alignleft" /> </div>
-						<div id="tile3"><img src="images/three.jpg" alt="" width="90" height="78" class="alignleft" /> </div>
-					</div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<p>This initiative is not only focussed on a team building activity but spending some light moments out of the work and to have a proper worklife balance.  Working in Agile it's very important to know each other and learn from others as you can get the most out of people when you know them by these off work activities.  We always focus on all these areas and design the activities in such a way.</p>
-					<!--<ul>
-						<li>
-							<h2>Praesent scelerisque</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-					</ul>-->
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- end #menu -->
-	<div id="three-columns">
-		<div id="column1">
-			<h2>Floor Meets</h2>
-			<p>Every month MFC organizes a ODC floor meet in which the HR updates all the associates regarding any HR activity for that particular month. Introduction of the new joinees in ODC is an exciting task in it. <br/> Floor meets also have a fun @ work activity planned for each in which whole of the ODC participates. </p>
-
-		</div>
-		<div id="column2">
-			<h2>Annual Event</h2>
-			<p>Every year a 3-day long annual event is planned which comprises of many activites like treasure-hunt, talent show, ODC decoration. <br> This happens mostly at the end of the year, mainly in November - December. <br> Its a large scale event which every associate looks forward to.
-			</p>
-
-		</div>
-		<div id="column3">
-			<h2>ODC Outing</h2>
-			<p>ODC level outings and picnics are planned for associates. <br>Many trip have been planned for the ODC to distant places like Malshej ghats, Nagothane and Lonavla.<br> These trips have interesting activities throughout.</p>
-
-		</div>
-	</div>
+    <%end%>
+    <%end%>
 </div>
-<div id="footer">
-	<p>MFC</p>
+<!-- end #page -->
+
+
 </div>
-<!-- end #footer -->
-</body>
-</html>
+
+<!-- end #menu -->
+<!--div id="three-columns">
+<div id="column1">
+<h2>Floor Meets</h2>
+<p>Every month MFC organizes a ODC floor meet in which the HR updates all the associates regarding any HR activity for that particular month. Introduction of the new joinees in ODC is an exciting task in it. <br/> Floor meets also have a fun @ work activity planned for each in which whole of the ODC participates. </p>
+
+</div>
+<div id="column2">
+<h2>Annual Event</h2>
+<p>Every year a 3-day long annual event is planned which comprises of many activites like treasure-hunt, talent show, ODC decoration. <br> This happens mostly at the end of the year, mainly in November - December. <br> Its a large scale event which every associate looks forward to.
+</p>
+</div>
+<div id="column3">
+<h2>ODC Outing</h2>
+<p>ODC level outings and picnics are planned for associates. <br>Many trip have been planned for the ODC to distant places like Malshej ghats, Nagothane and Lonavla.<br> These trips have interesting activities throughout.</p>
+</div>
+</div-->
+<div id="footer-dash">
+<p>MFC</p>
+</div>

@@ -15,8 +15,8 @@
 
   <div>
       <font size="3px"><%= f.label :role %>
-      <%= f.radio_button :role , 'Member',:checked => true %> Member 
-      <%= f.radio_button :role, 'Admin'%> Admin
+      <%#= f.radio_button :role , 'Member',:checked => true %>
+      <%= f.radio_button :role, 'Admin',:checked => true%> Admin
     </div><br>
 
   <div><%= f.submit "Sign up" %></div>
