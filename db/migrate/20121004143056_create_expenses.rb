@@ -1,10 +1,10 @@
 class CreateExpenses < ActiveRecord::Migration
   def change
     create_table :expenses do |t|
-      t.string :description, :null => false
-      t.float :amount, :null => false
-	    t.integer :created_by, :null => false
-      t.integer :updated_by, :null => false
+      t.text :description
+      t.float :amount
+	    t.integer :created_by
+      t.integer :updated_by
       t.references :event
       t.timestamps
     end

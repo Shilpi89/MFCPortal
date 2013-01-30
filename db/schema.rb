@@ -11,32 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123140554) do
+ActiveRecord::Schema.define(:version => 20130123134128) do
 
   create_table "activities", :force => true do |t|
-    t.string   "title",       :null => false
-    t.string   "description"
-    t.integer  "created_by",  :null => false
+    t.string   "title"
+    t.text     "description"
+    t.integer  "created_by"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "name",        :null => false
+    t.string   "name"
     t.text     "description"
-    t.integer  "created_by",  :null => false
-    t.integer  "updated_by",  :null => false
+    t.integer  "created_by"
+    t.integer  "updated_by"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "events", :force => true do |t|
-    t.string   "title",       :null => false
-    t.string   "description"
-    t.datetime "start_date",  :null => false
-    t.datetime "end_date",    :null => false
-    t.integer  "created_by",  :null => false
-    t.integer  "updated_by",  :null => false
+    t.string   "title"
+    t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "created_by"
+    t.integer  "updated_by"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(:version => 20130123140554) do
   add_index "events_activities", ["event_id"], :name => "idx_events_acts_event_id"
 
   create_table "expenses", :force => true do |t|
-    t.string   "description", :null => false
-    t.float    "amount",      :null => false
-    t.integer  "created_by",  :null => false
-    t.integer  "updated_by",  :null => false
+    t.text     "description"
+    t.float    "amount"
+    t.integer  "created_by"
+    t.integer  "updated_by"
     t.integer  "event_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

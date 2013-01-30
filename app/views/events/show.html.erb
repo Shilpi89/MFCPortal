@@ -2,11 +2,12 @@
 <div>
   <h2> <%= @event.title.capitalize %> </h2>
 </div>
+  <br/>
   <div>
     <div><b><font size="2px">Type Of Event:</font></b>
       <%  @category = Category.find(@event.category_id)%>
       <%=  @category.name%>
-      <%= get_event_category_name(@event.category)%></div><br/>  
+    </div><br/>  
 
     <div><b><font size="2px">Description:</font></b>
       <%= @event.description.capitalize %></div><br/>

@@ -8,17 +8,7 @@ class Event < ActiveRecord::Base
   attr_accessible :title, :description, :start_date, :end_date, :category_id
    
   validates :title, :description, :category_id, :start_date, :end_date, :presence => true
-  validates :title, :length => 
-  {
-   :maximum => 50,
-   :too_long  => "Can have at most %{count} words"
-  }
-
-  validates :description, :length =>
-   { 
-    :maximum => 500,
-    :too_long  => "Can have at most %{count} words"
-    }
+  validates_length_of :title, :within => 6..30, :too_long => "Pick a shorter Title", :too_short => "Pick a longer Title"
   belongs_to :category
 
 end

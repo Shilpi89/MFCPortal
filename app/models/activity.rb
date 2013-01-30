@@ -5,10 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :events, :through => :events_activities
 
 
-  validates :description, :title, :presence => true
-  validates :description, :length => 
-  { :maximum => 500,
-    :too_long  => "Can have at most %{count} words"
-  }
+  validates :description,:title, :presence => true
+  validates_length_of :title, :within => 6..30, :too_long => "Pick a shorter Title", :too_short => "Pick a longer Title"
 
 end

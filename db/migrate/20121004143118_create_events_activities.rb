@@ -3,7 +3,6 @@ class CreateEventsActivities < ActiveRecord::Migration
     create_table :events_activities do |t|
       t.references :event
       t.references :activity
-      t.string :description
       t.timestamps
     end
     add_index :events_activities, :event_id, :name => 'idx_events_acts_event_id'

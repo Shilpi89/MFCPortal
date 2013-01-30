@@ -25,7 +25,7 @@
     <h2><h2 style="line-height: 100px;">No Events</h2></h2>
   <%else%>
     <% @events = Event.find(:all, :order => 'start_date').reverse%>
-    <%@events.each do |event|%>
+    <% @events.each do |event|%>
       <h2 id=""><%= event.title%></h2>
       <div class="entry" style="padding-bottom: 60px;">
         <p><%=event.description%></p>
@@ -33,25 +33,43 @@
         
       </div>
       <div id="page">
-      <div id="column1">
-        <%if event.activities.count > 0%>
-        <% event.activities.each do |eA|%>
-          <h2> <%= eA.title %></h2>
-          <p style="color:black;"><%= eA.description %></p>
+         <%i = 0%>
+         <%if event.activities.count > 0%>
+           <% event.activities.each do |eA|%>
+             <%if i%3 == 0 %>
+               <div id="column1">
+               <h2><%= eA.title %></h2>
+               <p style="color:black;"><%= eA.description %></p>
+               </div>
         <%end%>
-          <%else%>
-          <h2>No Activities Added</h2>
+             <%if i%3 == 1 %>
+               <div id="column2">
+               <h2><%= eA.title %></h2>
+               <p style="color:black;"><%= eA.description %></p>
+               </div>
+        <%end%>
+             <%if i%3 == 2%>
+               <div id="column3">
+               <h2> <%= eA.title %></h2>
+               <p style="color:black;"><%= eA.description %></p>
+               </div>
+             <%end%>
+            <%i = i+1 %>
           <%end%>
+         <%else%>
+        <div id="column1" style="float:left;">
+           <h2>No Activities Added</h2>
+        </div>
+         <%end%>
       </div>
+      <%end%>
+    <%end%>
       </div>
 
-    <%end%>
-    <%end%>
+    
 </div>
 <!-- end #page -->
 
-
-</div>
 
 <!-- end #menu -->
 <!--div id="three-columns">

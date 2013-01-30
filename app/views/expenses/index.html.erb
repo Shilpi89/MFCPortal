@@ -25,6 +25,7 @@
   <br/>
   <br/>
 <%end%>
+  <p>Total Expenses for this Event : Rs. <%= total_expense_amt(@event.id) %></p>
 <%= link_to "Add More", new_event_expense_path(@event)%> <br/>
 <%= link_to "Back", events_path %>
 </div>
