@@ -48,7 +48,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "Successfully Updated Category."
       redirect_to categories_path
     else
-      flash[:notice] = "Category Could Not Be Updated."
+      flash[:notice] = @category.errors.full_messages.join(", ")
       render :action => :edit
     end
   end
