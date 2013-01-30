@@ -123,14 +123,26 @@ skip_filter :authenticate_user!, :only => :dashboard
 
     def update
         @event = Event.find(params[:id])
-        unless params[:new_category_name].blank?
-          @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
-          @category.save
-          params[:event][:category_id] = @category.id
-          @event.update_attributes(params[:event])
+        if params[:event][:category_id].blank?
+          unless params[:new_category_name].nil?
+            @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
+            @category.save
+            params[:event][:category_id] = @category.id
+            @event.update_attributes(params[:event])
+          else
+            @event.update_attributes(params[:event])
+          end
         else
           @event.update_attributes(params[:event])
         end
+#        unless params[:new_category_name].blank?
+#          @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
+#          @category.save
+#          params[:event][:category_id] = @category.id
+#          @event.update_attributes(params[:event])
+#        else
+#          @event.update_attributes(params[:event])
+#        end
 
         if params[:new_activity_title].nil? 
         else
@@ -139,13 +151,13 @@ skip_filter :authenticate_user!, :only => :dashboard
             params[:activities] << @activity.title
         end
 
-        EventsActivity.add_remove_activities(params[:activities],@event)
+        #EventsActivity.add_remove_activities(params[:activities],@event)
 
         if @event.update_attributes(params[:event])
             flash[:notice] = "Successfully Updated Event."
             redirect_to event_path(params[:id])
          else
-            flash[:notice] = "Event Could Not Be Updated."
+            flash[:notice] = @event.errors.full_messages.join(", ")
             render :action => :edit
         end
     end    
