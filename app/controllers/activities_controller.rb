@@ -52,7 +52,7 @@ class ActivitiesController < ApplicationController
             flash[:notice] = "Successfully Updated activity."
             redirect_to activities_path
          else
-            flash[:notice] = "activity Could Not Be Updated."
+            flash[:notice] = @activity.errors.full_messages.join(", ")
             render :action => :edit
         end
     end    
