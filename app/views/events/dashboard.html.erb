@@ -1,6 +1,6 @@
-<div id="wrapper">
-  <div id="header-wrapper">
-    <div id="header">
+<div id="wrapper-dash">
+  <div id="header-wrapper-dash">
+    <div id="header-dash">
       <div id="menu1">
         <ul>
           <li class="current_page_item"><a href="gallery.html">Gallery</a></li>
@@ -32,7 +32,7 @@
         <p>Date of Event : <%=event.start_date.to_date%></p>
         
       </div>
-      <div id="page">
+      <div id="page-dash">
          <%i = 0%>
          <%if event.activities.count > 0%>
            <% event.activities.each do |eA|%>

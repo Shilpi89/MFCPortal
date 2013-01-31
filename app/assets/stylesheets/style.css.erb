@@ -120,7 +120,7 @@ h1 {
 }
 
 h2 {
-	font-size: 30px;  
+	font-size: 30px;
 }
 
 h3 {
@@ -144,15 +144,16 @@ a {
 a:hover {
 }
 
-#wrapper {
+
+#wrapper-dash {
 	padding: 0;
 	background: url(<%=asset_path "main-image-bg.jpg" %>) no-repeat center top;
         width: 100%;
+        overflow: hidden;
 }
-
 /* Header */
 
-#header-wrapper {
+#header-wrapper-dash {
 	overflow: hidden;
 	height: 300px;
 	position:relative;
@@ -160,11 +161,12 @@ a:hover {
 	background: url(<%=asset_path "header-wrapper-bg.png" %>) repeat-x left top;
 }
 
-#header {
+#header-dash {
 	overflow: hidden;
 	width: 950px;
 	height: 300px;
 	margin: 0 auto;
+        padding: 0;
 }
 
 /* Logo */
@@ -187,13 +189,13 @@ a:hover {
 #logo h1 {
 	letter-spacing: -1px;
 	text-align: center;
-
+        text-transform: none;
 	font-size: 3.8em;
 }
 
 #logo p {
 	margin-top: -10px;
-	padding: 40px 0 0 10px;
+	padding: 25px 0 0 10px;
 	text-align: center;
 	font-size: 18px;
 	color: #FFFFFF;
@@ -364,9 +366,9 @@ a:hover {
 
 /* Page */
 
-#page {
+#page-dash {
 	width: 920px;
-
+        overflow: hidden;
 	margin: 0 auto;
 	position:relative;
 	top: -70px;

@@ -3,7 +3,7 @@
   <title>M.F.C</title>
   
   <%= stylesheet_link_tag "application"%><%#,"jquery-ui-1.8.21.custom","style", "colorbox", "flexslider", :media => "all" %>
-  <%= javascript_include_tag "application"%><%#,"customize_MFC","jquery-ui-1.8.21.custom.min", "image_fade", "jquery.easing-sooper", "jquery.sooperfish", "modernizr-1.5.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC.js"%>
+  <%= javascript_include_tag "application"%><%#,"customize_MFC","jquery-ui-1.8.21.custom.min", "image_fade", "jquery.easing-sooper", "jquery.sooperfish", "modernizr-1.5.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC"%>
   <%= csrf_meta_tags %>
 </head>
 
@@ -15,7 +15,7 @@
    <%= render 'shared/header' %>
   <%else%>
     <div class="nav-collapse pull-right">
-      <b style="color:gray;size:2px;margin-right: 20px;" ><%= link_to 'Admin Sign-in', new_user_session_path %></b>
+      <b style="color:gray;margin-right: 20px;" ><%= link_to 'Admin Sign-in', new_user_session_path %></b>
     </div>
 
 <%end%>
