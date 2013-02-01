@@ -5,19 +5,26 @@ class EventsActivity < ActiveRecord::Base
 
   
 
-	def self.add_remove_activities(activities,event)
-	
-		existing_event_ids = event.activities.collect{|e| e.id.to_s}
-		events_ids_to_remove = existing_event_ids - activities
-		events_ids_to_add = activities - existing_event_ids
+  def self.add_event_activities (event, activities)
+    activities.each do |activity|
+      @eventsActivity = EventsActivity.new(:event_id => event.id,
+        :activity_id => activity)
+      @eventsActivity.save
+    end
+  end
 
-		events_ids_to_add.each do |add|
-			EventsActivity.create(:event_id => event.id,:activity_id => add.to_i)  
-		end
+  def self.update_event_activities(event, activities)
 
-		events_ids_to_remove.each do |remove|
-			EventsActivity.destroy_all(:event_id => event.id ,:activity_id => remove.to_i)		
-		end
-	end
-	
+    existing_activities_ids = event.activities.collect{|e| e.id.to_s}
+    activities_ids_to_remove = existing_activities_ids - activities
+    activities_ids_to_add = activities - existing_activities_ids
+
+    activities_ids_to_add.each do |add|
+      EventsActivity.create(:event_id => event.id,:activity_id => add.to_i)
+    end
+
+    activities_ids_to_remove.each do |remove|
+      EventsActivity.destroy_all(:event_id => event.id ,:activity_id => remove.to_i)
+    end
+  end
 end

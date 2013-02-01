@@ -1,12 +1,12 @@
 
-<%= form_for ([@event, @expense]) do |f| %>      
-<div><b><font size="3px">Description</font></b><br/>
-      <%= f.text_area :description, :rows => 5 %></div><br/>
+<%= form_for ([@event, @expense]) do |f| %>
+  <div><b><font size="3px">Description</font></b><br/>
+    <%= f.text_area :description, :rows => 5 %></div><div id='em_expense_description'> </div><br/>
 
-<div><b><font size="3px">Amount</font></b><br/>
-      <%= f.text_field :amount %></div><br>
+  <div><b><font size="3px">Amount</font></b><br/>
+    <%= f.text_field :amount %></div><div id='em_expense_amount'> </div><br>
 
- <div class="actions" ><%= f.submit%>
-    </div>
+  <div class="actions" id= "expense_form_submit" ><%= f.submit%>
+  </div>
 
- <%end%>
+<%end%>

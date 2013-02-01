@@ -1,14 +1,16 @@
+
+
 <%= form_for (@activity) do |f| %>
-    <div><b><font size="3px">Title</font></b><br/>
-     <%= f.text_field :title %></div><br/>
+  <div><b><font size="3px">Title</font></b><br/>
+    <%= f.text_field :title %></div><div id='em_activity_title'> </div><br/>
 
-    <div><b><font size="3px">Description</font></b><br/>
-      <%= f.text_area :description, :rows => 5 %></div><br/>
+  <div><b><font size="3px">Description</font></b><br/>
+    <%= f.text_area :description, :rows =>5 %></div><div id='em_activity_description'> </div><br/>
 
-    <div style="height: 20px">
-    </div>
+  <div style="height: 20px">
+  </div>
 
-    <div class="actions" ><%= f.submit%>
-    </div>
-    
-  <%end%>
+  <div class="actions" id = "activity_form_submit"><%= f.submit%>
+  </div>
+
+<%end%>
