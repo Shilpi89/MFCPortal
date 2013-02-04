@@ -52,15 +52,15 @@ class EventsController < ApplicationController
 #              @event.save
 #            end
 
-    activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user )
-    EventsActivity.add_event_activities(@event, activities)
-
     category = Category.create_new_category(params[:event][:category_id], params[:new_category_name], params[:new_category_description], current_user)
-    
-    
     @event.category_id = category
     @event.created_by = current_user.id
     @event.updated_by = current_user.id
+    @event.save
+    activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user )
+    EventsActivity.add_event_activities(@event, activities)
+    
+    
       
     if @event.save
       flash[:notice] = "Successfully created a new Event."
