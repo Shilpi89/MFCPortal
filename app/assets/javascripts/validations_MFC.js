@@ -7,15 +7,15 @@ $(document).ready(function(){
             $('#em_title').html('Title Cannot Be Blank');
             count = count + 1;
         }
-        if ($('#category').val() == null){
-            $('#em_category').html('Please Select a type of event1');
-            count = count + 1;
-        }
+//        if ($('#category').val() == null){
+//            $('#em_category').html('Please Select a type of event1');
+//            count = count + 1;
+//        }
 
-        if ($('#category').val() == null && $('#new_category_name').val() == '' && $('#new_category_description').val() == '' ){
-            $('#em_category').html('Please Select a type of event3');
-            count = count + 1;
-        }
+//        if ($('#category').val() == null && $('#new_category_name').val() == '' && $('#new_category_description').val() == '' ){
+//            $('#em_category').html('Please Select a type of event');
+//            count = count + 1;
+//        }
 
         
 
