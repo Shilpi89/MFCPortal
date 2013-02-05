@@ -8,31 +8,26 @@ $(document).ready(function(){
             count = count + 1;
         }
 //        if ($('#category').val() == null){
-//            $('#em_category').html('Please Select a type of event1');
-//            count = count + 1;
-//        }
-
-//        if ($('#category').val() == null && $('#new_category_name').val() == '' && $('#new_category_description').val() == '' ){
 //            $('#em_category').html('Please Select a type of event');
 //            count = count + 1;
 //        }
-
-        
-
-//        if ($('#category').val()!= ''&& ( $('#new_category_name').val() != '' || $('#new_category_description').val() != '' )){
-//            $('#em_category').html('Event can be of one type only');
+//
+//        if ($('#new_category_name').val() == '' && $('#new_category_description').val() == '' ){
+//            $('#em_category').html('Please Select a type of event');
 //            count = count + 1;
 //        }
 //
-//        if ($('#category').val() == null && $('#new_category_name').val()== '' && $('#new_category_description').val()!= '' ){
-//            $('#em_new_category').html('Please enter title for the new type of event');
-//            count = count + 1;
-//        }
 //
-//        if ($('#category').val() == null && $('#new_category_name').val()!= '' && $('#new_category_description').val()== '' ){
-//            $('#em_new_category').html('Please enter description for the new type of event');
-//            count = count + 1;
-//        }
+//
+//        if ($('#new_category_name').val()== '' && $('#new_category_description').val()!= '' ){
+//              $('#em_new_category').html('Please enter title for the new type of event');
+//              count = count + 1;
+//          }
+//
+//        if ($('#new_category_name').val()!= '' && $('#new_category_description').val()== '' ){
+//              $('#em_new_category').html('Please enter description for the new type of event');
+//              count = count + 1;
+//          }
 
 
         if ($('#event_title').val().length > 50 ){

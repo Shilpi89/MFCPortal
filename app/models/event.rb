@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
   has_many :expenses
   attr_accessible :title, :description, :category_id, :start_date, :end_date, :category_id
    
-  validates :title, :description, :start_date, :end_date, :presence => true
+  validates :title, :description, :category_id, :start_date, :end_date, :presence => true
   validates_length_of :title, :within => 6..30, :too_long => "Pick a shorter Title", :too_short => "Pick a longer Title"
   belongs_to :category
 end
