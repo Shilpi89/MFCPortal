@@ -24,7 +24,7 @@
   <div><b><font size="3px">Add Activities</font></b><br/>
     <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]}, @event.activities.collect{|e| e.id}),{:multiple => true} %></div><div id='em_activities'> </div>
 
-  <%= link_to other_activity_events_path(), {:remote => true, :id => "other_activity", :method => :post} %>
+  <%= link_to "Add New Activity",other_activity_events_path(), {:remote => true, :id => "other_activity", :method => :post} %>
   <br/><br/>
   <div id="tempact"> </div>
 
