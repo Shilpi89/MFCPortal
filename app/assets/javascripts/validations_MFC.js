@@ -10,6 +10,7 @@ $(document).ready(function(){
             count = count + 1;
         }
 
+
         if ($('#event_title').val().length > 50 ){
             document.getElementById('em_title').innerHTML='Title is Too Long';      
             count = count + 1;

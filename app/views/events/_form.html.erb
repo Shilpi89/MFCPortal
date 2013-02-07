@@ -57,7 +57,6 @@
           <b><font size="3px">Add Activities</font></b><br/>
             <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]}, @event.activities.collect{|e| e.id}),{:multiple => true} %>
         </div><br/>
-
         <div>
           Want to add a new Activity? <%= check_box_tag 'new_activity_check' %>
         </div>
