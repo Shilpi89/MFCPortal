@@ -64,9 +64,42 @@ $(function() {
         }
     }); 
 
+    $("#activities").multiselect({
+        searchable: true,
+        noneSelectedText: 'Select Activities'
+    }).multiselectfilter();
+
+    // $("#event_category_id").multiselect({
+    //      searchable: true,
+    //      multiple: false,
+    //      noneSelectedText: 'Select A Category'
+    // }).multiselectfilter();
+
 });
 
+$(function() {
+    $("#new_category_check").click(function() {
+      if ($(this).is(":checked")) {
+        $("#event_category_id").prop("disabled", true);
+        $("#add_new_category").show()
+      } 
 
+      else {
+        $("#event_category_id").prop("disabled", false);
+        $("#add_new_category").hide()
+      }
+    });
+
+
+    $("#new_activity_check").click(function() {
+      if ($(this).is(":checked")) {
+        $("#add_new_activity").show()
+      } 
+      else {     
+        $("#add_new_activity").hide()
+      }
+    });
+});
 
 
 
