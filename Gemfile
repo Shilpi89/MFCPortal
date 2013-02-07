@@ -23,6 +23,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'libv8'
 end
 
 
