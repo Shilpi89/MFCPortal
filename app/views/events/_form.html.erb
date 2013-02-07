@@ -4,7 +4,7 @@
 
 
   <div><b><font size="3px">Select Type Of Event:</font></b><br/>
-    <%=collection_select(:event, :category_id, Category.all, :id, :name, {:include_blank => 'None'}) %>
+    <%=collection_select(:event, :category_id, Category.all, :id, :name) %>
     <br/>
     Want to add a new Event Type ? <%= check_box_tag 'chked' %>
     <br/>

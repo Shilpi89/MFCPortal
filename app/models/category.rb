@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
 
   validates :name, :description, :presence => true
   validates_length_of :name, :within => 6..30, :too_long => "Pick a shorter Name", :too_short => "Pick a longer name"
-  has_many :events
+  has_many :events, :dependent => :destroy
 
   def self.create_new_category(category, new_category_name, new_category_description, current_user)
 
