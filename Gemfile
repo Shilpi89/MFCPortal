@@ -34,7 +34,7 @@ gem 'twitter-bootstrap-rails'
 gem 'therubyrhino'
 gem 'less-rails'
 gem 'less'
-#gem 'libv8'
+gem 'libv8'
 
 
 
