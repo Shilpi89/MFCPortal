@@ -1,79 +1,88 @@
 $(document).ready(function(){
 
     $('#event_form_submit').click(function(){
-        var count = 0
 
-        if ($('#event_title').val() == ''){
-            $('#em_title').html('Title Cannot Be Blank');
+        event_form_reset();
+        var count = 0
+     
+        if ($('#event_title').val() == ''){                
+            document.getElementById('em_title').innerHTML='Title Cannot be blank';
             count = count + 1;
         }
-//        if ($('#category').val() == null){
-//            $('#em_category').html('Please Select a type of event');
-//            count = count + 1;
-//        }
-//
-//        if ($('#new_category_name').val() == '' && $('#new_category_description').val() == '' ){
-//            $('#em_category').html('Please Select a type of event');
-//            count = count + 1;
-//        }
-//
-//
-//
-//        if ($('#new_category_name').val()== '' && $('#new_category_description').val()!= '' ){
-//              $('#em_new_category').html('Please enter title for the new type of event');
-//              count = count + 1;
-//          }
-//
-//        if ($('#new_category_name').val()!= '' && $('#new_category_description').val()== '' ){
-//              $('#em_new_category').html('Please enter description for the new type of event');
-//              count = count + 1;
-//          }
 
 
         if ($('#event_title').val().length > 50 ){
-            $('#em_title').html('Title is Too Long');
+            document.getElementById('em_title').innerHTML='Title is Too Long';      
             count = count + 1;
         }
 
+
+        if ($("#new_category_check").is(":not(:checked)") && $('#event_category_id').val() == null ) {
+            document.getElementById('em_category').innerHTML='Please Select a Category';    
+            count = count + 1;
+        }
+
+        if ($("#new_category_check").is(":checked")) {
+
+            if ($('#new_category_name').val() == '' && $('#new_category_description').val()== '' ){
+                document.getElementById('em_category').innerHTML='Please enter description and title for the new category';
+                count = count + 1;
+            }
+    
+            if ($('#new_category_name').val()!= '' && $('#new_category_description').val()== '' ){
+                document.getElementById('em_category').innerHTML='Please enter description for the new category';
+                count = count + 1;
+            }
+
+            if ($('#new_category_name').val()== '' && $('#new_category_description').val()!= '' ){
+                document.getElementById('em_category').innerHTML='Please enter title for the new category';
+                count = count + 1;
+            }
+        }
+    
         if ($('#event_description').val() == ''){
-            $('#em_description').html('Description Cannot Be Blank');
+            document.getElementById('em_description').innerHTML='Description Cannot Be Blank';
             count = count + 1;
         }
 
         if ($('#event_description').val().length > 500){
-            $('#em_description').html('Description is Too Long');
-            count = count + 1;
-        }
-
-        if ($('#event_category').val() == ''){
-            $('#em_category').html('Category Cannot Be Blank');
+            document.getElementById('em_description').innerHTML='Description is Too Long';
             count = count + 1;
         }
 
         if ($('#event_start_date').val() == ''){
-            $('#em_start_date').html('Please Select a date from the calender');
+            document.getElementById('em_start_date').innerHTML='Please Select a date from the calender';
             count = count + 1;
         }
 
         if ($('#event_end_date').val() == ''){
-            $('#em_end_date').html('Please Select a date from the calender');
+            document.getElementById('em_end_date').innerHTML='Please Select a date from the calender';
             count = count + 1;
         }
 
-        if ($('#activities').val() == null && $('#new_activity_title').val() == '' && $('#new_activity_description').val() == '' ){
-            $('#em_activities').html('Please Select a Activity');
+        if ($("#new_activity_check").is(":not(:checked)") && $('#activities').val() == null ) {
+            document.getElementById('em_activities').innerHTML='Please Select a Activity';    
             count = count + 1;
         }
 
-        if ($('#new_activity_title').val()!= '' && $('#new_activity_description').val()== '' ){
-            $('#em_new_activity').html('Please enter description for the new activity');
-            count = count + 1;
-        }
+        if ($("#new_activity_check").is(":checked")) {
 
-        if ($('#new_activity_title').val()== '' && $('#new_activity_description').val()!= '' ){
-            $('#em_new_activity').html('Please enter title for the new activity');
-            count = count + 1;
+            if ($('#activities').val() == null && $('#new_activity_title').val() == '' && $('#new_activity_description').val() == '' ){
+                document.getElementById('em_activities').innerHTML='Please Select a Activity';
+                count = count + 1;
+            }
+
+            if ($('#new_activity_title').val()!= '' && $('#new_activity_description').val()== '' ){
+                document.getElementById('em_activities').innerHTML='Please enter description for the new activity';
+                count = count + 1;
+            }
+
+            if ($('#new_activity_title').val()== '' && $('#new_activity_description').val()!= '' ){
+                document.getElementById('em_activities').innerHTML='Please enter title for the new activity';
+                count = count + 1;
+            }
         }
+    
 
         if (count != 0){
             return false;
@@ -114,5 +123,16 @@ $(document).ready(function(){
         }
     });
 
+function event_form_reset(){
+    window.document.getElementById('em_title').innerHTML = '' ;
+    window.document.getElementById('em_description').innerHTML = '' ; 
+    window.document.getElementById('em_start_date').innerHTML = '' ;
+    window.document.getElementById('em_end_date').innerHTML = '' ;
+    window.document.getElementById('em_activities').innerHTML = '' ;
+    window.document.getElementById('em_category').innerHTML = '' ;
+    return;
+}
+
 
 });
+

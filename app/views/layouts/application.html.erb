@@ -1,10 +1,11 @@
 <html>
 <head>
   <title>M.F.C</title>
-  
-  <%= stylesheet_link_tag "application"%><%#,"jquery-ui-1.8.21.custom","style", "colorbox", "flexslider", :media => "all" %>
-  <%= javascript_include_tag "application"%><%#,"customize_MFC","jquery-ui-1.8.21.custom.min", "image_fade", "jquery.easing-sooper", "jquery.sooperfish", "modernizr-1.5.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC"%>
-  <%= csrf_meta_tags %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag "application" %> <%#"jquery-ui-1.8.21.custom","style", "colorbox", "flexslider","jquery.multiSelect", "jquery.multiSelect.filter", :media => "all" %>
+  <%= javascript_include_tag "application"%><%# "customize_MFC","jquery-ui-1.8.21.custom.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC", "jquery.multiSelect", "jquery.multiSelect.filter"%>
+
 </head>
 
 <body>
@@ -22,7 +23,7 @@
  
 
 <% if user_signed_in? %>
-  <div class="well span2" style="min-height: 500px;width: 215px;">
+  <div class="well span2" style="min-height: 500px;width: 215px;"><font size="2px">
   
   <ul class="nav nav-pills nav-stacked" style="text-align: left;">
     <li class="active">
@@ -40,7 +41,7 @@
     <%end%>
   </ul>
 
-  </div>
+  </font></div>
 <%end %>
   <%= yield %>
 

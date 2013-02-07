@@ -1,6 +1,9 @@
 MFCPortal::Application.routes.draw do
-  devise_for :users
-  
+
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
+
   resources :activities
   resources :categories do
     resources :events
@@ -10,14 +13,15 @@ MFCPortal::Application.routes.draw do
     resources :expenses
     collection do
       get "dashboard"
-      post "other_activity"
-      post "other_category"
+      get "other_activity"
+      get "other_category"
       get "welcome"
     end
   end
 
   #root :to => "events#welcome"
   root :to => "events#dashboard"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

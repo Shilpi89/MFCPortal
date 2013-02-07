@@ -1,57 +1,116 @@
-<%= form_for (@event), :html => {:id => "event_form"} do |f|  %>
-  <div><b><font size="3px">Title</font></b><br/>
-    <%= f.text_field :title %></div> <div id='em_title'> </div> <br/>
+<%= form_for (@event), :html => {:id => "event_form"} do |f| %>
+  <table>
+    <tr>
+      <td>
+        <div>
+            <b><font size="3px">Title</font></b><br/>
+            <%= f.text_field :title %>
+        </div>
+      </td>
+      <td>
+        <div id='em_title'>
+        </div>
+      </td>
+    </tr>
 
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">Select Event's Category:</font></b><br/>
+          <%=collection_select(:event, :category_id, Category.all, :id, :name) %>
+        </div></br>
 
-  <div><b><font size="3px">Select Type Of Event:</font></b><br/>
-    <%=collection_select(:event, :category_id, Category.all, :id, :name) %>
-    <br/>
-    Want to add a new Event Type ? <%= check_box_tag 'chked' %>
-    <br/>
-    <br/>
-  </div>
-  <div id='em_category'> </div>
+        <div>
+          Want to add a new Category ? <%= check_box_tag 'new_category_check' %>
+        </div>
 
-  <div id='em_categories'> </div>
-  <div id ="cat" style="display: none;">
-    <%= link_to "Any Other Event Type", other_category_events_path(), {:remote => true, :id => "other_category", :method => :post} %>
-    <br/><br/>
-    <div id="tempcat"> </div>
-  </div>
-  <div><b><font size="3px">Description</font></b><br/>
-    <%= f.text_area :description , :rows => 5 %></div> <div id='em_description'> </div><br/>
+        <div id ="add_new_category" style="display: none;">
+          <div id="ajax_new_category">
+             <%= link_to "Any New Event Category", other_category_events_path(), {:remote => true, :id => "other_category", :method => :get} %>
+          </div>
+        </div>
+      </td>
 
-  <div><b><font size="3px">Add Activities</font></b><br/>
-    <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]}, @event.activities.collect{|e| e.id}),{:multiple => true} %></div><div id='em_activities'> </div>
+      <td>
+        <div id='em_category'>
+        </div>
+      </td>
+    </tr>
 
-  <%= link_to "Add New Activity",other_activity_events_path(), {:remote => true, :id => "other_activity", :method => :post} %>
-  <br/><br/>
-  <div id="tempact"> </div>
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">Description</font></b><br/>
+          <%= f.text_area :description , :rows => 5 %>
+        </div>
+      </td>
 
-  <div><b><font size="3px">Start Date </font></b><br/>
-    <%= f.text_field :start_date, :readonly => true%></div><div id='em_start_date'> </div><br/>
+      <td>
+        <div id='em_description'>
+        </div>
+      </td>
+    </tr>
 
-  <div><b><font size="3px">End Date </font></b><br/>
-    <%= f.text_field :end_date, :readonly => true %></div><div id='em_end_date'> </div><br/>
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">Add Activities</font></b><br/>
+            <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]}, @event.activities.collect{|e| e.id}),{:multiple => true} %>
+        </div><br/>
+        <div>
+          Want to add a new Activity? <%= check_box_tag 'new_activity_check' %>
+        </div>
 
-  <div style="height: 20px">
-  </div>
+        <div id ="add_new_activity" style="display: none;">
+          <div id="ajax_new_activity">
+             <%= link_to "Add New Activity", other_activity_events_path(), {:remote => true, :id => "other_activity", :method => :get} %>
+          </div>
+        </div>
+      </td>
 
-  <div id = "event_form_submit" class="actions" ><%= f.submit%>
-  </div>
+      <td>
+        <div id='em_activities'> </div>
+      </td>
+    </tr>
 
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">Start Date </font></b><br/>
+          <%= f.text_field :start_date, :readonly => true%>
+        </div>
+      </td>
+
+      <td>
+        <div id='em_start_date'>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">End Date </font></b><br/>
+          <%= f.text_field :end_date, :readonly => true %>
+        </div>
+      </td>
+
+      <td>
+        <div id='em_end_date'>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <div style="height: 20px">
+      </div>
+    </tr>
+
+    <tr>
+      <td>
+        <div id = "event_form_submit" class="actions" ><%= f.submit%>
+        </div>
+      </td>
+    </tr>
+  </table>
 <%end%>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#chked").click(function() {
-      if ($(this).is(":checked")) {
-        $("#event_category_id").prop("disabled", true);
-        $("#cat").show()
-      } else {
-        $("#event_category_id").prop("disabled", false);
-        $("#cat").hide()
-      }
-    });
-  });
-</script>

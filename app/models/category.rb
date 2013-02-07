@@ -20,9 +20,4 @@ class Category < ActiveRecord::Base
      end
   end
 
-#  def self.update_new_category(category, new_category_name, new_category_description, current_user)
-#
-#  end
-
-
 end
