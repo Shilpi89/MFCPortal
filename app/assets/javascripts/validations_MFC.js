@@ -90,14 +90,15 @@ $(document).ready(function(){
     });
 
     $('#activity_form_submit').click(function(){
+        activites_form_reset();
         var count = 0
         if ($('#activity_title').val() == ''){
-            $('#em_activity_title').html('Title Cannot Be Blank');
+            document.getElementById('em_activity_title').innerHTML='Title Cannot Be Blank';
             count = count + 1;
         }
 
         if ($('#activity_description').val() == ''){
-            $('#em_activity_description').html('Description Cannot Be Blank');
+            document.getElementById('em_activity_description').innerHTML='Description Cannot Be Blank';
             count = count + 1;
         }
 
@@ -106,15 +107,40 @@ $(document).ready(function(){
         }
     });
 
+
+
+$('#category_form_submit').click(function(){
+        category_form_reset();
+        var count = 0
+        if ($('#category_name').val() == ''){
+            document.getElementById('em_category_name').innerHTML='Title Cannot Be Blank';
+            count = count + 1;
+        }
+
+        if ($('#category_description').val() == ''){
+            document.getElementById('em_category_description').innerHTML='Description Cannot Be Blank';
+            count = count + 1;
+        }
+
+        if (count !=0 ){
+            return false;
+        }
+    });
+
+
+
+
+
     $('#expense_form_submit').click(function(){
+        expense_form_reset();
         var count = 0
         if ($('#expense_description').val() == ''){
-            $('#em_expense_description').html('Description Cannot Be Blank');
+            document.getElementById('em_expense_description').innerHTML='Description Cannot Be Blank';
             count = count + 1;
         }
 
         if ($('#expense_amount').val() == ''){
-            $('#em_expense_amount').html('Amount Cannot Be Blank');
+            document.getElementById('em_expense_amount').innerHTML='Amount Cannot Be Blank';
             count = count + 1;
         }
 
@@ -130,6 +156,26 @@ function event_form_reset(){
     window.document.getElementById('em_end_date').innerHTML = '' ;
     window.document.getElementById('em_activities').innerHTML = '' ;
     window.document.getElementById('em_category').innerHTML = '' ;
+    return;
+}
+
+
+function activites_form_reset(){
+    window.document.getElementById('em_activity_title').innerHTML = '' ;
+    window.document.getElementById('em_activity_description').innerHTML = '' ; 
+    return;
+}
+
+
+function expense_form_reset(){
+    window.document.getElementById('em_expense_description').innerHTML = '' ;
+    window.document.getElementById('em_expense_amount').innerHTML = '' ; 
+    return;
+}
+
+function category_form_reset(){
+    window.document.getElementById('em_category_name').innerHTML = '' ;
+    window.document.getElementById('em_category_description').innerHTML = '' ; 
     return;
 }
 

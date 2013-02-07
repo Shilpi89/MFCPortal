@@ -13,8 +13,6 @@ MFCPortal::Application.routes.draw do
     resources :expenses
     collection do
       get "dashboard"
-      get "other_activity"
-      get "other_category"
       get "welcome"
     end
   end

@@ -27,31 +27,7 @@ class EventsController < ApplicationController
     @activities = Activity.all
     @categories = Category.all
     @event = Event.new (params[:event])
-    #code for setting dynamic category
-
-
-#          if params[:event][:category_id].blank?
-#              unless params[:new_category_name].nil?
-#                @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
-#                @category.save
-#                @event = Event.new (params[:event])
-#                @event.category_id = @category.id
-#               @event.created_by = current_user.id
-#               @event.updated_by = current_user.id
-#               @event.save
-#             else
-#                @event = Event.new (params[:event])
-#               @event.created_by = current_user.id
-#               @event.updated_by = current_user.id
-#                @event.save
-#             end
-#           else
-#             @event = Event.new (params[:event])
-#             @event.created_by = current_user.id
-#             @event.updated_by = current_user.id
-#              @event.save
-#            end
-
+   
     category = Category.create_new_category(params[:event][:category_id], params[:new_category_name], params[:new_category_description], current_user)
     @event.category_id = category
     @event.created_by = current_user.id
@@ -106,17 +82,6 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-#    unless params[:new_category_name].nil?
-#      @category = Category.new(:name => params[:new_category_name], :description => params[:new_category_description], :created_by => current_user.id, :updated_by => current_user.id)
-#      @category.save
-#      params[:event][:category_id] = @category.id
-#      @event.update_attributes(params[:event])
-#      p params[:event]
-#    else
-#
-#      @event.update_attributes(params[:event])
-#
-#    end
 
     activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user)
     EventsActivity.update_event_activities(@event, activities)
@@ -131,18 +96,5 @@ class EventsController < ApplicationController
       flash[:notice] = @event.errors.full_messages.join(", ")
       render :action => :edit
     end
-  end
-
-  def other_activity
-    respond_to do |format|
-      format.js {}
-    end
-  end
-
-  def other_category
-    respond_to do |format|
-      format.js {}
-    end
-
   end
 end
