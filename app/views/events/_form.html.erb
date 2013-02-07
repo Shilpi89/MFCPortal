@@ -7,8 +7,10 @@
             <%= f.text_field :title %>
         </div>
       </td>
-      <td>
-        <div id='em_title'>
+
+      <td>  
+        <div id='em_title' class = "errors">
+
         </div>
       </td>
     </tr>
@@ -25,16 +27,22 @@
         </div>
 
         <div id ="add_new_category" style="display: none;">
-          <div id="ajax_new_category">
-             <%= link_to "Any New Event Category", other_category_events_path(), {:remote => true, :id => "other_category", :method => :get} %>
+          <div class="well span3" style ="margin-right: 100px">
+            <div><b><font size="3px">New Category </font></b><br/>
+              <%= text_field_tag :new_category_name %></div><br/>
+
+            <div><b><font size="3px">New Category Description</font></b><br/>
+              <%= text_field_tag :new_category_description %></div><br/>
           </div>
         </div>
       </td>
 
       <td>
-        <div id='em_category'>
-        </div>
-      </td>
+
+        <div id='em_category' class = "errors">
+        </div> 
+      </td>  
+
     </tr>
 
     <tr>
@@ -45,8 +53,9 @@
         </div>
       </td>
 
-      <td>
-        <div id='em_description'>
+      <td>  
+        <div id='em_description' class = "errors" >
+
         </div>
       </td>
     </tr>
@@ -62,15 +71,21 @@
         </div>
 
         <div id ="add_new_activity" style="display: none;">
-          <div id="ajax_new_activity">
-             <%= link_to "Add New Activity", other_activity_events_path(), {:remote => true, :id => "other_activity", :method => :get} %>
+          <div class="well span3" style ="margin-right: 100px"> 
+            <div><b><font size="3px">New Activity Title</font></b><br/>
+              <%= text_field_tag :new_activity_title %></div><br/>
+
+            <div><b><font size="3px">New Activity Description</font></b><br/>
+              <%= text_field_tag :new_activity_description %></div><br/>  
           </div>
         </div>
       </td>
 
-      <td>
-        <div id='em_activities'> </div>
-      </td>
+
+      <td> 
+        <div id='em_activities' class = "errors"> </div> 
+      </td>  
+
     </tr>
 
     <tr>
@@ -81,8 +96,9 @@
         </div>
       </td>
 
-      <td>
-        <div id='em_start_date'>
+      <td>  
+        <div id='em_start_date' class = "errors">
+
         </div>
       </td>
     </tr>
@@ -95,8 +111,9 @@
         </div>
       </td>
 
-      <td>
-        <div id='em_end_date'>
+      <td>  
+        <div id='em_end_date' class = "errors">
+
         </div>
       </td>
     </tr>
