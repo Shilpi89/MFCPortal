@@ -1,11 +1,17 @@
 class EventsController < ApplicationController
   
   #load_and_authorize_resource
-  skip_filter :authenticate_user!, :only => :dashboard
+  skip_filter :authenticate_user!, :only => [:dashboard, :gallery, :contact_us]
 
   def welcome
   end
     
+  def gallery
+  end
+
+  def contact_us
+  end
+
   def index
     @events = Event.all
   end
