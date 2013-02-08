@@ -64,10 +64,10 @@ $(function() {
         }
     }); 
 
-    $("#activities").multiselect({
-        searchable: true,
-        noneSelectedText: 'Select Activities'
-    }).multiselectfilter();
+//    $("#activities").multiselect({
+//        searchable: true,
+//        noneSelectedText: 'Select Activities'
+//    }).multiselectfilter();
 
     // $("#event_category_id").multiselect({
     //      searchable: true,
