@@ -1,11 +1,11 @@
 
 $(function(){
     if($("#devise_notice").text() != ""){
-        createDialog("<h3 class='heading3 alert-message'>"+ $("#devise_notice").text() +"</h3>");
+        createDialog("<p class='heading3 alert-message'><b>"+ $("#devise_notice").text() +"</b></p>");
         $("#devise_notice").remove();
     }
     if($("#devise_alert").text() != ""){
-        createDialog("<h3 class='heading3 alert-message'>"+ $("#devise_alert").text() +"</h3>");
+        createDialog("<p class='heading3 alert-message'><b>"+ $("#devise_alert").text() +"</b></p>");
         $("#devise_alert").remove();
     }
     function createDialog( message) {
@@ -18,7 +18,7 @@ $(function(){
         });
         setTimeout(function() {
             $.colorbox.close();
-        }, 1400);
+        }, 2300);
     }
 
 });
