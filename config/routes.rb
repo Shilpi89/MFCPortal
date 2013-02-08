@@ -14,6 +14,8 @@ MFCPortal::Application.routes.draw do
     collection do
       get "dashboard"
       get "welcome"
+      get "gallery"
+      get "contact_us"
     end
   end
 

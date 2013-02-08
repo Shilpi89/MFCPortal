@@ -3,16 +3,16 @@
     <div id="header-dash">
       <div id="menu1">
         <ul>
-          <li class="current_page_item"><a href="gallery.html">Gallery</a></li>
+          <li class="current_page_item"><%=link_to "Gallery", gallery_events_path%></li>
         </ul>
       </div>
       <div id="logo">
         <h1 style="color:white">M.F.C</h1>
-        <p> McKinsey Fun Committee </p>
+        <p>Firm Fun Committee</p>
       </div>
       <div id="menu2">
         <ul>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><%=link_to "Contact Us", contact_us_events_path%></li>
         </ul>
       </div>
     </div>
@@ -39,19 +39,19 @@
              <%if i%3 == 0 %>
                <div id="column1">
                <h2><%= eA.title %></h2>
-               <p style="color:black;"><%= eA.description %></p>
+               <p style="color:white;"><%= eA.description %></p>
                </div>
         <%end%>
              <%if i%3 == 1 %>
                <div id="column2">
                <h2><%= eA.title %></h2>
-               <p style="color:black;"><%= eA.description %></p>
+               <p style="color:white;"><%= eA.description %></p>
                </div>
         <%end%>
              <%if i%3 == 2%>
                <div id="column3">
                <h2> <%= eA.title %></h2>
-               <p style="color:black;"><%= eA.description %></p>
+               <p style="color:white;"><%= eA.description %></p>
                </div>
              <%end%>
             <%i = i+1 %>
@@ -68,26 +68,6 @@
 
     
 </div>
-<!-- end #page -->
-
-
-<!-- end #menu -->
-<!--div id="three-columns">
-<div id="column1">
-<h2>Floor Meets</h2>
-<p>Every month MFC organizes a ODC floor meet in which the HR updates all the associates regarding any HR activity for that particular month. Introduction of the new joinees in ODC is an exciting task in it. <br/> Floor meets also have a fun @ work activity planned for each in which whole of the ODC participates. </p>
-
-</div>
-<div id="column2">
-<h2>Annual Event</h2>
-<p>Every year a 3-day long annual event is planned which comprises of many activites like treasure-hunt, talent show, ODC decoration. <br> This happens mostly at the end of the year, mainly in November - December. <br> Its a large scale event which every associate looks forward to.
-</p>
-</div>
-<div id="column3">
-<h2>ODC Outing</h2>
-<p>ODC level outings and picnics are planned for associates. <br>Many trip have been planned for the ODC to distant places like Malshej ghats, Nagothane and Lonavla.<br> These trips have interesting activities throughout.</p>
-</div>
-</div-->
 <div id="footer-dash">
-<p>Mckinsey Fun Committee</p>
+  <p>M.F.C</p>
 </div>
