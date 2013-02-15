@@ -1,0 +1,32 @@
+<%= render 'shared/admin' %>
+<div class= "well pull right span8" style = "min-height:500px; margin-left:50px"> 
+<%if @events.blank? %>
+<div>
+</div>
+<%else%>
+<div style="overflow:auto;">
+    <table border ="1px" id="activity_list_table" align = "center" >
+      <thead>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px"><b>Event ID</b></td>
+          <td style=" min-width: 20px "><b>Event Title </b></td>
+          <td style=" padding-right: 5px; padding-left: 5px; max-width: 250px "><b>Activities </b></td>
+        </tr>
+      </thead>
+
+      <%@events.each do |event|%>
+        <tr>
+          <td style=" padding-right: 5px; padding-left: 5px; min-width: 50px "><%= event.id%></td>
+          <td style=" min-width: 20px "><%= event.title%></td>
+
+          <td style=" padding-right: 5px; padding-left: 5px; max-width: 250px"><% event.activities.each do |eA|%><%= eA.title %>,<%end%></td>
+   
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <%end%>
+  <div style ="margin-top :10px;  margin-left :90px">
+  <%= link_to 'Back', events_path %>
+</div>
+  </div>

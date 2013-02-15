@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <div class="well span2" style="min-height: 500px;width: 215px;"><font size="2px">
+  
+  <ul class="nav nav-pills nav-stacked" style="text-align: left;">
+    <li class="active">
+    <%= link_to 'Home', welcome_events_path %>
+    </li>
+    
+    <li><%= link_to 'Events', events_path %></li>
+    
+    <% if current_user.role.downcase == 'admin'%>
+    <li><%= link_to 'View Event Activites', event_activity_list_events_path %></li>
+    <%end%>
+
+    <% if current_user.role.downcase == 'admin'%>
+    <li><%= link_to 'Manage Event Categories', categories_path %></li>
+    <%end%>
+  </ul>
+
+  </font></div>
+<%end %>
