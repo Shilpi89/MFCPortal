@@ -1,34 +1,33 @@
-<div class="navbar navbar-fixed-top">
-<div class="navbar-inner" style="height:55px">
-    <div>
-    <a class= "pull-left" style="margin-left:15px; margin-top:10px; magin-bottom:20px"><h3><font color= "white">M.F.C Portal</font></h3></a>
-      <% if user_signed_in? %>
-        <div class="nav-collapse pull-right">
-          <ul class="nav">
-            <li class="active"></li>
-            <li class="dropdown">
-              <a href="#"
-                class="dropdown-toggle"
-                data-toggle="dropdown"
-                style="margin-top:15px">
-                <b><font color= "white" size="2px">
-                  Welcome, <%= current_user.email %>
-                </b></font>
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
-                <li class="divider"></li>
-                <li> <%= link_to "Sign out", destroy_user_session_path , :method => :delete%> </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      <% end %>
+<div class="navbar navbar-fixed-top"style="height:30px">
+  <div class="navbar-inner" style="height:30px;padding-top: 10px;">
+    
+    <div style = "margin-left :10px;">
+      <b style="font-size:15px;color:white;margin-left:30px"><%= link_to "Home", welcome_events_path%> &nbsp; &nbsp;<%= link_to "Dashboard", dashboard_events_path%></b></font>
     </div>
-</div>
+
+    <div class="nav-collapse pull-right">
+      <ul class="nav" style="margin:-30px 10px 0 0;">
+        <li class="active"></li>
+        <li class="dropdown">
+          <a href="#"
+            class="dropdown-toggle";
+            data-toggle="dropdown";>
+              <b><font color= "white" size="2px">
+                Welcome, <%= current_user.email %>
+              </font></b>
+              <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Edit Account', edit_user_registration_path %></li>
+            <li class="divider"></li>
+            <li> <%= link_to "Sign out", destroy_user_session_path , :method => :delete%> </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>    
 </div>
 
 <br>
-<br>
+<br> 
 <br>

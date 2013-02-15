@@ -1,4 +1,5 @@
-<div class= "well pull right span8" style = "min-height:500px; margin-left:50px"> 
+<%= render 'shared/admin' %>
+<div class= "well span5" style = "min-height:500px; margin-left:50px "> 
 <%if @events.blank? %>
 <div>
 </div>
@@ -27,7 +28,7 @@
     </table>
 </div>
 <%end%>  
-<div style = "margin-top: 20px; margin-left: 250px">
+<div style = "margin-top: 20px; margin-left: 160px">
 <%= link_to 'Create New Event', new_event_path %><br/>
 </div>
 </div>    

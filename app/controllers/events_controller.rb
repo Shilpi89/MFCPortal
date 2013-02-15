@@ -39,11 +39,15 @@ class EventsController < ApplicationController
     @event.created_by = current_user.id
     @event.updated_by = current_user.id
     @event.save
-    activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user )
-    EventsActivity.add_event_activities(@event, activities)
-    
-    
-      
+    # activities = Activity.create_new_activities(params[:new_activity_title], params[:new_activity_description], current_user )
+
+    if !params[:new_activity_title].nil?
+      @activity = Activity.new(:title => params[:new_activity_title], :description => params[:new_activity_description], :created_by => current_user.id, :event_id => @event.id)
+      @activity.save
+    else  
+    end
+
+    # EventsActivity.add_event_activities(@event, activities)     
     if @event.save
       flash[:notice] = "Successfully created a new Event."
       redirect_to events_path
@@ -57,14 +61,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @eventsActivities = EventsActivity.where("event_id = #{@event.id}")
+    # @eventsActivities = EventsActivity.where("event_id = #{@event.id}")
     @expenses = Expense.where("event_id = #{@event.id}")
   end
 
 
   def destroy
     @event = Event.find(params[:id])
-    EventsActivity.destroy_all("event_id = #{@event.id}")
+    # EventsActivity.destroy_all("event_id = #{@event.id}")
     Expense.destroy_all("event_id = #{@event.id}")
         
     @event.destroy
@@ -81,7 +85,7 @@ class EventsController < ApplicationController
     
   def edit
     @event = Event.find(params[:id])
-    @activities = Activity.all
+    # @activities = Activity.all
     @categories = Category.all
   end
 
@@ -89,8 +93,8 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user)
-    EventsActivity.update_event_activities(@event, activities)
+    # activities = Activity.create_new_activities(params[:activities], params[:new_activity_title], params[:new_activity_description], current_user)
+    # EventsActivity.update_event_activities(@event, activities)
 
     category = Category.create_new_category(params[:event][:category_id], params[:new_category_name], params[:new_category_description], current_user)
     params[:event][:category_id] = category
@@ -102,5 +106,17 @@ class EventsController < ApplicationController
       flash[:notice] = @event.errors.full_messages.join(", ")
       render :action => :edit
     end
+
   end
+
+  def event_activity_list
+    @events = Event.all
+  end
+
+  def other_activity
+    respond_to do |format|
+      format.js {}
+    end
+  end
+    
 end

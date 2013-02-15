@@ -3,48 +3,27 @@
   <title>M.F.C</title>
   <%#= javascript_include_tag%>
  
-  <%= stylesheet_link_tag "application" ,"jquery-ui-1.8.21.custom","style", "colorbox", "flexslider", :media => "all" %>
-  <%= javascript_include_tag  :defaults ,"application","customize_MFC","jquery-ui-1.8.21.custom.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC"%>
+  <%= stylesheet_link_tag "application" ,"jquery-ui-1.8.21.custom","style", "colorbox", "flexslider", "jquery.ui.timepicker" , :media => "all" %>
+  <%= javascript_include_tag  :defaults ,"application","customize_MFC","jquery-ui-1.8.21.custom.min", "jquery.colorbox", "jquery.flexslider", "validations_MFC", "jquery.ui.timepicker"%>
  <%= csrf_meta_tag %>
 </head>
 
 <body>
-  <p class="alert" id="devise_alert"><%= alert %></p>
-  <p class="notice" id="devise_notice"><%= notice %></p>
 
+  <p id="devise_alert"><%= alert %></p>
+  <p id="devise_notice"><%= notice %></p>
   <%if  user_signed_in? %>
    <%= render 'shared/header' %>
   <%else%>
-    <div class="nav-collapse pull-right">
-      <b style="color:gray;margin-right: 20px;" ><%= link_to 'Admin Sign-in', new_user_session_path %></b>
-    </div>
+    
+      <b style="color:gray; margin-right: 20px;margin-left: 87%;" ><%= link_to 'Admin Sign-in', new_user_session_path, :target => "_blank" %></b>
+  
 
 <%end%>
  
 
-<% if user_signed_in? %>
-  <div class="well span2" style="min-height: 500px;width: 215px;"><font size="2px">
-  
-  <ul class="nav nav-pills nav-stacked" style="text-align: left;">
-    <li class="active">
-    <%= link_to 'Home', welcome_events_path %>
-    </li>
-    
-    <li><%= link_to 'Events', events_path %></li>
-    
-    <% if current_user.role.downcase == 'admin'%>
-    <li><%= link_to 'Manage Activites', activities_path %></li>
-    <%end%>
 
-    <% if current_user.role.downcase == 'admin'%>
-    <li><%= link_to 'Manage Event Categories', categories_path %></li>
-    <%end%>
-  </ul>
-
-  </font></div>
-<%end %>
   <%= yield %>
-
 
 
 </body>

@@ -35,6 +35,25 @@ $(function() {
 
 
 $(function() {
+    $('#event_start_time').timeEntry().change(function() { 
+        var log = $('#log'); 
+        log.val(log.val() + ($('#event_start_time').val() || 'blank') + '\n'); 
+    });
+
+
+     $('#event_end_time').timeEntry().change(function() { 
+        var log = $('#log'); 
+        log.val(log.val() + ($('#event_end_time').val() || 'blank') + '\n'); 
+    });
+});
+
+// $(function() {
+//     $('#event_start_time').timepicker();
+//     $('#event_end_time').timepicker();
+// });
+
+
+$(function() {
 
 
     $( "#event_start_date" ).datepicker({
@@ -63,17 +82,6 @@ $(function() {
             $( "#event_start_date" ).datepicker( "option", "maxDate", selectedDate );
         }
     }); 
-
-//    $("#activities").multiselect({
-//        searchable: true,
-//        noneSelectedText: 'Select Activities'
-//    }).multiselectfilter();
-
-    // $("#event_category_id").multiselect({
-    //      searchable: true,
-    //      multiple: false,
-    //      noneSelectedText: 'Select A Category'
-    // }).multiselectfilter();
 
 });
 

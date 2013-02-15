@@ -1,26 +1,5 @@
-<div class= "well span6" style = "min-height:500px; margin-left:200px"> 
-<h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div class = "span8" style ="align :center">
+  <h3 style="color:white;"> <b>Sorry You Cannot Access This Page </b></h3>
+<div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div>
-      <font size="3px"><%= f.label :role %>
-      <%#= f.radio_button :role , 'Member',:checked => true %>
-      <%= f.radio_button :role, 'Admin',:checked => true%> Admin
-    </div><br>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-</div>

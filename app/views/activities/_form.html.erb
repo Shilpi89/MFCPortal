@@ -1,16 +1,37 @@
-
-
 <%= form_for (@activity) do |f| %>
-  <div><b><font size="3px">Title</font></b><br/>
-    <%= f.text_field :title %></div><div id='em_activity_title' class = "errors"> </div><br/>
+	<table>
+		<tr>
+			<td>	
+  				<div><b><font size="3px">Title</font></b><br/>
+    			<%= f.text_field :title %></div>
+    		</td>
+    		<td>
+    			<div id='em_activity_title' class = "errors"> </div>
+    		</td>
+    	</tr>
 
-  <div><b><font size="3px">Description</font></b><br/>
-    <%= f.text_area :description, :rows =>5 %></div><div id='em_activity_description' class = "errors"> </div><br/>
+    	<tr>		
+    		<td>
+  				<div><b><font size="3px">Description</font></b><br/>
+    			<%= f.text_area :description, :rows =>5 %></div>
+    		</td>
 
-  <div style="height: 20px">
-  </div>
-
-  <div class="actions" id = "activity_form_submit"><%= f.submit%>
-  </div>
-
+    		<td>	
+    			<div id='em_activity_description' class = "errors"> </div>
+    		</td>	
+    	</tr>
+    	
+    	<tr>
+    		<td>	
+  				<div style="height: 20px">
+  				</div>
+  			</td>	
+  		</tr>
+  		<tr>	
+  			<td>
+  				<div class="actions" id = "activity_form_submit"><%= f.submit%>
+  				</div>
+  			</td>	
+  		</tr>	
+	</table>
 <%end%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123134128) do
+ActiveRecord::Schema.define(:version => 20130215131151) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20130123134128) do
     t.integer  "created_by"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "event_id"
   end
+
+  add_index "activities", ["event_id"], :name => "idx_activities_event_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -40,19 +43,11 @@ ActiveRecord::Schema.define(:version => 20130123134128) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "category_id"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   add_index "events", ["category_id"], :name => "index_events_on_category_id"
-
-  create_table "events_activities", :force => true do |t|
-    t.integer  "event_id"
-    t.integer  "activity_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "events_activities", ["activity_id"], :name => "idx_events_acts_activity_id"
-  add_index "events_activities", ["event_id"], :name => "idx_events_acts_event_id"
 
   create_table "expenses", :force => true do |t|
     t.text     "description"

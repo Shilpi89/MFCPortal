@@ -16,6 +16,8 @@ MFCPortal::Application.routes.draw do
       get "welcome"
       get "gallery"
       get "contact_us"
+      get "other_activity"
+      get "event_activity_list"
     end
   end
 

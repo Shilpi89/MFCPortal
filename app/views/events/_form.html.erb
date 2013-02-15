@@ -63,29 +63,20 @@
     <tr>
       <td>
         <div>
-          <b><font size="3px">Add Activities</font></b><br/>
-            <%= select_tag "activities", options_for_select(@activities.collect{|activity| [activity.title, activity.id]}, @event.activities.collect{|e| e.id}),{:multiple => true} %>
-        </div><br/>
-        <div>
-          Want to add a new Activity? <%= check_box_tag 'new_activity_check' %>
-        </div>
-
-        <div id ="add_new_activity" style="display: none;">
-          <div class="well span3" style ="margin-right: 100px"> 
-            <div><b><font size="3px">New Activity Title</font></b><br/>
-              <%= text_field_tag :new_activity_title %></div><br/>
-
-            <div><b><font size="3px">New Activity Description</font></b><br/>
-              <%= text_field_tag :new_activity_description %></div><br/>  
-          </div>
+           <%= link_to "Add Activity", other_activity_events_path, {:remote => true, :id => "other_activity", :method => :get} %> <div id = "new_activity"></div>
         </div>
       </td>
-
 
       <td> 
         <div id='em_activities' class = "errors"> </div> 
       </td>  
+    </tr>
 
+    <tr>
+      <td>
+        <div style= "height:20px">
+        </div>
+      </td>
     </tr>
 
     <tr>
@@ -117,6 +108,47 @@
         </div>
       </td>
     </tr>
+
+    <tr>
+      <span class="timeEntry_control" style="display: inline-block; background: url("img/spinnerDefault.png") no-repeat scroll 0px 0px transparent; width: 20px; height: 20px;" title="Next field"></span>
+    </tr>
+
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">Start Time </font></b><br/>
+          <%= f.text_field :start_time%>
+        </div>
+      </td>
+
+      <td>  
+        <div id='em_start_time' class = "errors">
+
+        </div>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <div>
+          <b><font size="3px">End Time </font></b><br/>
+          <%= f.text_field :end_time%>
+        </div>
+      </td>
+
+      <td>  
+        <div id='em_end_time' class = "errors">
+
+        </div>
+      </td>
+    </tr>
+
+
+
+
+
+
 
     <tr>
       <div style="height: 20px">
